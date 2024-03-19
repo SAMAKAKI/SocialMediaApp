@@ -1,0 +1,17 @@
+version: '3'
+services:
+  express-api:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - socialMediaApp
+    environment:
+      DATABASE_URL: 'mongodb://SAMAKAKI:Nikitosicheck2006.@socialMediaApp:27017/SocialMediaApp?authSource=admin&directConnection=true'
+  socialMediaApp:
+    image: prismagraphql/mongo-single-replica:5.0.3
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: SAMAKAKI
+      MONGO_INITDB_ROOT_PASSWORD: Nikitosicheck2006.
